@@ -40,7 +40,7 @@
 
         <div class="card-bottom">
           <h3>Rs. 550</h3>
-          <button>ORDER</button>
+          <router-link to="shop"><button>ORDER</button></router-link>
         </div>
 
       </div>
@@ -66,7 +66,7 @@
 
         <div class="card-bottom">
           <h3>Rs. 650</h3>
-          <button>ORDER</button>
+          <router-link to="shop"><button>ORDER</button></router-link>
         </div>
 
       </div>
@@ -92,7 +92,7 @@
 
         <div class="card-bottom">
           <h3>Rs. 650</h3>
-          <button>ORDER</button>
+          <router-link to="shop"><button>ORDER</button></router-link>
         </div>
 
       </div>
@@ -118,7 +118,7 @@
 
         <div class="card-bottom">
           <h3>Rs. 590</h3>
-          <button>ORDER</button>
+          <router-link to="shop"><button>ORDER</button></router-link>
         </div>
 
       </div>
@@ -129,9 +129,9 @@
 
 
   <!-- VIEW FULL MENU BUTTON -->
-  <button class="VIEW-MENU-BTN reveal">
+  <router-link to="shop"><button class="view-menu-button reveal">
     VIEW FULL MENU ↪
-  </button>
+  </button></router-link>
 
 
   <!-- LIKE NEWSLETTER -->
@@ -386,7 +386,7 @@
    /* VIEW MENU BUTTON */
 
 
-.VIEW-MENU-BTN {
+.view-menu-button {
   display: block;
   background-color: #5f2f11;
   color: rgb(240, 238, 238);
@@ -397,9 +397,10 @@
   border: 1px solid #C8A96B;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.VIEW-MENU-BTN:hover {
+.view-menu-button:hover {
   background-color: #c8A96B;
 }
 

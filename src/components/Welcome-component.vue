@@ -1,9 +1,9 @@
 <template>   
  <div class="background-img ">
-            <div class="welcome-flex ">
-            <p class="top-para">EST.2013.FAISALABAD , PAKISTAN</p>
+            <div class="welcome-flex text-content">
+            <p class="top-para">— EST.2013.FAISALABAD , PAKISTAN</p>
             <h1 class="welcome-headings ">Every Cup,</h1>
-            <h1 class="center-heading ">A Story.</h1>
+            <h1 class="center-heading story-glow">A Story.</h1>
             <h1 class="welcome-headings">Worth Telling.</h1>
             <p class="welcome-sec-para ">Maria caffix is where rare single-origin beans meet <br/>artisan craft__ a  santuray for those who belive coffe is <br/> not merely a drink, but a ritual.</p>
            <div class="btn-flex">   
@@ -38,105 +38,259 @@
          
       
 </template>
+<style>
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  box-sizing: border-box;
 
-<style scoped>
- .background-img{
-    background-image:linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.5)), url('@/assets/welcome-image.jpg');
-     background-position: center;
-     background-repeat: no-repeat;
-     width: 100%;
-     height: 600px;
-     background-size: cover;
-      filter: blur(0.5px);
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 25px;
+  height: 65px;
+
+  background: transparent;
+  border-bottom: 1px solid transparent;
+
+  transition: 0.3s ease;
 }
-.top-para{
-    color: #C8A96B;
-    font-size: 15px;
-    line-height: 1px;
-    margin-bottom: 16px;
-    letter-spacing: 2px;
+
+.header.scrolled {
+  background-color: #f1ebe1;
+  border-bottom: 1px solid #c8a96b;
 }
-.welcome-headings{
-    color:rgb(245, 237, 237);
-    font-size: 60px;
-    margin-top: 6px;
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
-.center-heading{
-    color: #C8A96B;
-    font-size:60px;
+
+.text-content {
+  position: relative;
+  z-index: 1;
+
+  opacity: 0;
+  animation: fadeIn 4s ease forwards;
 }
-.welcome-flex{
-    display: flex;
-    justify-content:center;
-    align-items: flex-start;
-    flex-direction: column;
-    height: 600px;
-    margin-left: 10px;
-} 
-.welcome-sec-para{
-    color: rgb(190, 186, 186);
-    margin-top: 6px;
-    margin-bottom: 8px;
-    margin-left: 7px;
-    font-size: 23px;
-    font-weight: 300;
-    line-height: 30px;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
-.btn-1{
-    background-color: #C8A96B;
-    color: black;
-    padding: 7px;
-    height: 40px;
-    width: 135px;
-    cursor: pointer;
-    border: none;
+
+
+/* STORY GLOW */
+
+.story-glow {
+  color: #da9f2a;
+  animation: glow 2s ease-in-out infinite alternate;
 }
-.btn-1:hover{
-    background-color: rgb(243, 238, 238);
+
+@keyframes glow {
+  from {
+    text-shadow: 2px 2px 8px #cc921e;
+  }
+
+  to {
+    text-shadow: 2px 2px 7px #fda900;
+  }
 }
-.btn-2{
-    background: transparent;
-    border: 1px solid rgb(161, 158, 158);
-    color: white;
-    height: 40px;
-    width: 170px;
-    cursor: pointer;
-    padding: 8px;
+
+
+/* BACKGROUND */
+
+.background-img {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url('@/assets/welcome-image.png');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  width: 100%;
+  height: 600px;
+    margin: 0;
+  padding: 0;
+
+  filter: blur(0.5px);
 }
-.btn-2:hover{
-    border: 1px solid #C8A96B;
-    color: #C8A96B;
+
+
+/* MAIN TEXT */
+
+.welcome-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  height: 632px;
+  box-sizing: border-box;
+
+  margin-left: 25px;
+  padding-top: 50px;
 }
-.btn-flex{
-    display: flex;
-    flex-direction: row;
-    padding: 6px;
-    gap: 10px;
-    margin-top: 7px;
+
+
+/* SMALL TOP TEXT */
+
+.top-para {
+  color: #C8A96B;
+
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 2px;
+
+  margin: 0 0 25px 0;
 }
-.collection{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #5f361c;
-    height: 150px;
-    width: 100%;  
+
+
+/* MAIN HEADINGS */
+
+.welcome-headings {
+  color: rgb(245, 237, 237);
+
+  font-size: 70px;
+  line-height: 0.95;
+
+  margin: 0;
 }
-.div{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    
+
+
+/* A STORY */
+
+.center-heading {
+  color: #C8A96B;
+
+  font-size: 70px;
+  line-height: 0.95;
+
+  margin: 0;
 }
-.h2{
-   color: #C8A96B;
-   font-size: 43px;
+
+
+/* DESCRIPTION */
+
+.welcome-sec-para {
+  color: rgb(210, 205, 205);
+
+  margin: 25px 0 10px 7px;
+
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 30px;
 }
-.p{
-   color: rgb(190, 186, 186); 
-   font-size: 12px;
-   font-family: 'Roboto', sans-serif;
-} 
+
+
+/* BUTTONS */
+
+.btn-flex {
+  display: flex;
+  flex-direction: row;
+
+  gap: 10px;
+
+  margin-top: 15px;
+  padding: 0;
+}
+
+.btn-1 {
+  background-color: #C8A96B;
+  color: black;
+
+  padding: 7px;
+
+  height: 40px;
+  width: 135px;
+
+  cursor: pointer;
+  border: none;
+}
+
+.btn-1:hover {
+  background-color: rgb(243, 238, 238);
+}
+
+.btn-2 {
+  background: transparent;
+
+  border: 1px solid rgb(161, 158, 158);
+
+  color: white;
+
+  height: 40px;
+  width: 170px;
+
+  cursor: pointer;
+  padding: 8px;
+}
+
+.btn-2:hover {
+  border: 1px solid #C8A96B;
+  color: #C8A96B;
+}
+.cart-button {
+  position: relative;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.header.scrolled .cart-button {
+  color: #312828;
+}
+.collection {
+  width: 100%;
+  min-height: 150px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: #5f361c;
+  padding: 25px 0;
+  box-sizing: border-box;
+}
+
+.div {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.h2 {
+  color: #C8A96B;
+  font-size: 43px;
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+}
+
+.p {
+  color: #d6c7b5;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
 </style>

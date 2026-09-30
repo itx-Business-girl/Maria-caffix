@@ -2,20 +2,29 @@
   <!-- Final newsletter -->
   <div class="parent-flex">
 
-    <div class="div">
-      <div class="logo"> 
-      <div class="logo-name">
-        <img class="coffee-mug" src="@/assets/coffee-cup.svg" alt="Coffee">
-        Maria Caffix
-      </div> 
-      <div class="logo-subtitle">PREMIUM COFFEE</div> 
-    </div> 
+    <div class="logo">
 
-      <div style="color: #C8A96B; font-size: 12px; letter-spacing: 2px; line-height: 22px;">
-        PREMIUM COFFEE
-      </div>
+  <div class="logo-name">
 
-      <p style="color: lightgray; margin-top: 15px; line-height: 25px;">
+    <div class="mug-wrapper">
+      <img
+        class="coffee-mug"
+        src="@/assets/coffee-cup.svg"
+        alt="Coffee"
+      >
+
+      <span class="steam steam-1"></span>
+      <span class="steam steam-2"></span>
+    </div>
+
+    <span>Maria Caffix</span>
+
+  </div>
+
+  <div class="logo-subtitle">
+    PREMIUM COFFEE
+  </div>
+    <p style="color: lightgray; margin-top: 15px; line-height: 25px;">
         Crafted with passion and precision — every <br />
         cup a story, every sip a moment.
       </p>
@@ -103,13 +112,76 @@
 .find-us {
     grid-column: 1;
 }
-.coffee-mug{
+.mug-wrapper {
+  position: relative;
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
 }
-.logo-name{
-  color:#221d1d;
-  /* font-family: 'Roboto', sans-serif; */
+
+.coffee-mug {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+.logo-subtitle {
+  color: #C8A96B;
+  font-size: 11px;
+  margin-top: 3px;
+  font-weight: 100;
+  letter-spacing: 3.2px;
+}
+
+.steam {
+  position: absolute;
+  width: 3px;
+  height: 10px;
+
+  background: #ffffff;
+  border-radius: 50%;
+
+  opacity: 0;
+  filter: blur(1px);
+
+  animation: steamMove 2.5s ease-in-out infinite;
+}
+
+.steam-1 {
+  left: 10px;
+  top: -8px;
+}
+
+.steam-2 {
+  left: 18px;
+  top: -7px;
+  animation-delay: 1.2s;
+}
+
+@keyframes steamMove {
+  0% {
+    opacity: 0;
+    transform: translateY(5px) scaleX(0.8);
+  }
+
+  30% {
+    opacity: 0.5;
+  }
+
+  70% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-12px) scaleX(1.4);
+  }
+}
+.logo-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: white;
   font-size: 20px;
   font-weight: 600;
 }

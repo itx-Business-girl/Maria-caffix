@@ -40,5 +40,19 @@ onUnmounted(() => {
   opacity: 1;
   transform: translateY(0);
 }
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 </style>
 

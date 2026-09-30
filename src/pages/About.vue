@@ -97,91 +97,105 @@
 
         
 </template> 
+<style scoped>
 
-<style scoped> 
+/* 
+   HERO / WELCOME SECTION
+*/
 
-.background-img{ 
-    width: 100%; 
-    height: 400px; 
-    overflow: hidden;  
-    position: relative; 
-} 
-
-.background-img::before{ 
-    background-image: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.75),
-        rgba(48, 30, 19, 0.35),
-        rgba(46, 27, 19, 0.50)
-    ), url('@/assets/about-page.jpg'); 
-
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-
-    /* filter: blur(1px);  */
-    transform: scale(1.03); 
-
-    content: ""; 
-    position: absolute; 
-    inset: -8px; 
-    z-index: 0; 
-} 
-
-.text-content{
-    position: relative;
-    z-index: 1;
+.background-img {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
 }
 
-.text-content p{
-    color: #C8A96B;
-    font-size: 20px;
-    letter-spacing: 2px;
-    font-weight: 500;
-    margin-left: 40px;
+.background-img::before {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)), url('../assets/about-page.png');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transform: scale(1.03);
+
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: 0;
 }
 
-.text-content h1{
-    color: white;
-    font-size: 55px;
+.text-content {
+  position: relative;
+  z-index: 1;
 }
-.welcome-flex{
-    display: flex;
-    justify-content:center;
-    align-items: flex-start;
-    flex-direction: column;
-    height: 500px;
-    line-height: 60px; 
-    margin-left: 40px;
 
+.text-content p {
+  color: #C8A96B;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-left: 40px;
 }
-.shop-img{
-    display: block;
-    height: 500px;
-    width: 400px;
-    margin-top: 120px;
-    margin-right: 20px;
+
+.text-content h1 {
+  color: white;
+  font-size: 55px;
 }
+
+.welcome-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 500px;
+  line-height: 60px;
+  margin-left: 40px;
+}
+
+
+/* 
+   STORY SECTION
+*/
+
+.flex-shop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.flex-shop > div:first-child {
+  flex: 1;
+}
+
+.shop-para {
+  margin-left: 20px;
+  color: rgba(51, 34, 26, 0.75);
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 200;
+  margin-top: 30px;
+}
+
+.shop-img {
+  display: block;
+  height: 500px;
+  width: 400px;
+  margin-top: 120px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
 .image-container {
   position: relative;
   width: 400px;
   margin-top: 120px;
   margin-right: 20px;
+  flex-shrink: 0;
 }
-.flex-shop{
-  display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-}
-.shop-para{
-    margin-left: 20px;
-    color: rgba(51, 34, 26, 0.75);
-    font-size: 18px;
-    line-height: 30px;
-    font-weight: 200;
-    margin-top: 30px;
-}
+
 .badge {
   background-color: #C8A96B;
   color: #382319;
@@ -196,13 +210,20 @@
   bottom: -25px;
   width: 190px;
   height: 80px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   text-align: center;
   z-index: 5;
 }
-/* nxt section css */
+
+
+/* 
+   WHAT WE STAND FOR
+ */
+
 .parent-div {
   background-color: #f5ede0;
   width: 100%;
@@ -263,31 +284,220 @@
   line-height: 21px;
   margin: 0;
 }
-/* behind the cup sction css */
-.people-section{
-  padding:90px 40px;
+
+
+/*
+   PEOPLE BEHIND THE CUP
+*/
+
+.people-section {
+  padding: 90px 40px;
   text-align: center;
 }
-.people-wrapper{
+
+.people-wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 100px;
   flex-wrap: wrap;
 }
-.images{
-    height: 150px;
-    width: 150px;
-    border:2px solid #C8A96B;
-    margin: 0 auto 25px;
-    display: block;
-    object-fit: cover;
-    border-radius: 50%;
-.person-card{
+
+.person-card {
   width: 220px;
   text-align: center;
 }
+
+.images {
+  height: 150px;
+  width: 150px;
+  border: 2px solid #C8A96B;
+  margin: 0 auto 25px;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
+
+/* 
+   MOBILE RESPONSIVE
+ */
+
+@media (max-width: 700px) {
+
+  /* HERO */
+  .background-img {
+    height: auto;
+    min-height: 560px;
+  }
+
+  .welcome-flex {
+    height: auto;
+    min-height: 560px;
+
+    padding: 100px 20px 60px;
+    margin-left: 0;
+
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  .text-content p {
+    margin-left: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .text-content h1 {
+    font-size: 38px;
+    line-height: 1.25;
+    margin: 8px 0;
+  }
+
+
+  /* STORY TEXT FIRST */
+  .flex-shop {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    padding: 50px 20px 80px;
+    box-sizing: border-box;
+  }
+
+  .flex-shop > div:first-child {
+    width: 100%;
+    order: 1;
+  }
+
+  .flex-shop h1 {
+    margin-left: 0 !important;
+    margin-top: 20px !important;
+    font-size: 30px !important;
+    line-height: 1.3;
+  }
+
+  .shop-para {
+    margin-left: 0;
+    font-size: 16px;
+    line-height: 27px;
+    margin-top: 25px;
+  }
+
+  /* MANUAL <br> HIDE ON MOBILE */
+  .shop-para br {
+    display: none;
+  }
+
+
+  /* IMAGE BELOW TEXT */
+  .image-container {
+    order: 2;
+
+    width: 100%;
+    max-width: 400px;
+
+    margin: 50px auto 0;
+  }
+
+  .shop-img {
+    width: 100%;
+    height: auto;
+
+    max-height: 500px;
+
+    margin: 0;
+
+    object-fit: cover;
+  }
+
+  .gold-box {
+    left: 0;
+    bottom: -20px;
+  }
+
+
+  /* STAND FOR */
+  .parent-div {
+    min-height: auto;
+    padding: 60px 20px;
+  }
+
+  .parent-div > h1 {
+    font-size: 30px;
+    margin-bottom: 45px;
+  }
+
+  .cards-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .card-div {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    min-height: 220px;
+  }
+
+
+  /* PEOPLE */
+  .people-section {
+    padding: 70px 20px;
+  }
+
+  .people-section h1 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .people-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .person-card {
+    width: 100%;
+    max-width: 250px;
+  }
+
+}
+
+
+/* 
+   VERY SMALL SCREENS
+*/
+
+@media (max-width: 400px) {
+
+  .background-img {
+    min-height: 600px;
+  }
+
+  .welcome-flex {
+    min-height: 600px;
+    padding: 100px 15px 60px;
+  }
+
+  .text-content h1 {
+    font-size: 32px;
+  }
+
+  .text-content p {
+    font-size: 15px;
+  }
+
+  .shop-para {
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  .card-div {
+    padding: 25px 22px;
+  }
+
+}
 
 </style>

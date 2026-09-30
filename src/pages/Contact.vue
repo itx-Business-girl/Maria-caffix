@@ -2,7 +2,7 @@
   <!-- HERO SECTION -->
   <div class="background-img">
     <div class="text-content welcome-flex">
-      <p>— GET IN TOUCH</p>
+      <p class="sub-text">— GET IN TOUCH</p>
 
       <i>
         <h1>We'd Love to Hear From You</h1>
@@ -112,7 +112,8 @@
           <label>YOUR NAME</label>
 
           <input
-            type="text"
+            type="text" 
+            v-model="name"
             placeholder="Maria Khanim"
           />
         </div>
@@ -122,7 +123,7 @@
           <label>EMAIL ADDRESS</label>
 
           <input
-            type="email"
+            type="email" v-model="email"
             placeholder="hello@example.com"
             required
           />
@@ -137,7 +138,7 @@
         <label>SUBJECT</label>
 
         <input
-          type="text"
+          type="text"   v-model="subject"
           placeholder="Wholesale inquiry, event booking..."
         />
 
@@ -150,6 +151,7 @@
         <label>MESSAGE</label>
 
         <textarea
+          v-model="message"
           placeholder="Tell us how we can help..."
         ></textarea>
 
@@ -157,20 +159,25 @@
 
 
       <!-- Button -->
-      <button class="send-button">
+      <button class="send-button" @click="sendMessage">
         SEND MESSAGE →
       </button>
+       <!-- SUCCESS MESSAGE -->
+     <p v-if="submitted" class="success-message">
+     Your message has been sent successfully!
+     </p>
 
     </div>
-  </div>
+    </div>
+   
 </template>
 
 
 <style scoped>
 
-/* =========================
+/*
    HERO SECTION
-========================= */
+ */
 
 .background-img {
   width: 100%;
@@ -187,7 +194,7 @@
       rgba(48, 30, 19, 0.35),
       rgba(46, 27, 19, 0.50)
     ),
-    url('@/assets/coffee-beans.jpg');
+    url('@/assets/contact.jpg');
 
   background-position: center;
   background-repeat: no-repeat;
@@ -236,34 +243,31 @@
   margin: 10px 0;
 }
 
-.sub-text {
-  color: bisque;
+.sub-text{
+  color: #C8A96B;
   font-size: 16px;
-  font-weight: 300 ;
+  font-weight: 200 ;
   letter-spacing: 0 ;
 }
 
 
-/* =========================
+/* 
    CONTACT SECTIONS
-========================= */
+ */
 
 .contact-sections {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
   gap: 100px;
-
   padding: 70px 80px;
-
   background-color: #f5ede0;
 }
 
 
-/* =========================
+/* 
    FIND US
-========================= */
+*/
 
 .find-us {
   width: 40%;
@@ -273,7 +277,6 @@
   color: rgba(51, 34, 26, 0.99);
   font-size: 35px;
   font-weight: 600;
-
   margin-bottom: 35px;
 }
 
@@ -283,7 +286,6 @@
 .contact-item {
   display: flex;
   align-items: flex-start;
-
   margin-top: 28px;
 }
 
@@ -292,16 +294,12 @@
 
 .div-small {
   background-color: rgb(216, 211, 183);
-
   height: 28px;
   width: 28px;
-
   border: 1px solid rgb(128, 107, 76);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   flex-shrink: 0;
 }
 
@@ -341,27 +339,21 @@
 }
 
 
-/* =========================
+/* 
    SEND MESSAGE FORM
-========================= */
+ */
 
 .contact-flex {
   width: 55%;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
 }
 
 .contact-flex > h1 {
   color: rgba(51, 34, 26, 0.99);
-
   font-size: 35px;
-
   font-weight: 600;
-
   margin: 0 0 35px 0;
 }
 
@@ -370,9 +362,7 @@
 
 .top-placeholders {
   display: flex;
-
   gap: 22px;
-
   width: 100%;
 }
 
@@ -381,11 +371,8 @@
 
 .form-group {
   display: flex;
-
   flex-direction: column;
-
   flex: 1;
-
   margin-bottom: 25px;
 }
 
@@ -401,13 +388,9 @@
 
 .form-group label {
   color: #76594b;
-
   font-size: 12px;
-
   letter-spacing: 1.5px;
-
   margin-bottom: 10px;
-
   font-weight: 500;
 }
 
@@ -416,23 +399,14 @@
 
 .form-group input {
   width: 100%;
-
   height: 44px;
-
   box-sizing: border-box;
-
   padding: 10px 14px;
-
   border: 1px solid #d3c1ab;
-
   border-radius: 2px;
-
   background-color: #faf7f2;
-
   color: #2c1a0e;
-
   font-size: 14px;
-
   outline: none;
 }
 
@@ -441,27 +415,16 @@
 
 .form-group textarea {
   width: 100%;
-
   height: 145px;
-
   box-sizing: border-box;
-
   padding: 14px;
-
   border: 1px solid #d3c1ab;
-
   border-radius: 2px;
-
   background-color: #faf7f2;
-
   color: #2c1a0e;
-
   font-size: 14px;
-
   font-family: inherit;
-
   resize: vertical;
-
   outline: none;
 }
 
@@ -482,53 +445,47 @@
 }
 
 
-/* =========================
+/* 
    SEND BUTTON
-========================= */
+ */
 
 .send-button {
   width: 178px;
-
   height: 45px;
-
   border: none;
-
   border-radius: 2px;
-
   background-color: #713b20;
-
   color: white;
-
   font-size: 12px;
-
   font-weight: 600;
-
   letter-spacing: 1px;
-
   cursor: pointer;
-
   margin-top: 0;
 }
 
 
 .send-button:hover {
   background-color: #C8A96B;
-
   color: #2c1a0e;
 }
 
+.success-message {
+  color: #6b8e5a;
+  font-size: 14px;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+}
 
-/* =========================
+
+/* 
    RESPONSIVE
-========================= */
+*/
 
 @media (max-width: 768px) {
 
   .contact-sections {
     flex-direction: column;
-
     padding: 50px 30px;
-
     gap: 60px;
   }
 
@@ -539,13 +496,11 @@
 
   .top-placeholders {
     flex-direction: column;
-
     gap: 0;
   }
 
   .text-content h1 {
     font-size: 38px;
-
     text-align: center;
   }
  
@@ -560,3 +515,28 @@
   width:410px;
 }
 </style>
+
+<script setup>
+ import {ref} from 'vue'
+  
+ const name = ref('') 
+ const email = ref('')
+ const subject = ref('')
+ const message = ref('')
+
+ const submitted = ref(false)
+
+ const sendMessage = () =>{
+  if(!name.value || !email.value || !subject.value || !message.value){
+    alert('please fill in all fields.')
+    return
+  }
+
+  submitted.value = true
+
+  name.value = ''
+  email.value = ''
+  subject.value = ''
+  message.value = ''
+ }
+</script>
