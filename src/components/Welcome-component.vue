@@ -7,7 +7,7 @@
             <h1 class="welcome-headings">Worth Telling.</h1>
             <p class="welcome-sec-para ">Maria caffix is where rare single-origin beans meet <br/>artisan craft__ a  santuray for those who belive coffe is <br/> not merely a drink, but a ritual.</p>
            <div class="btn-flex">   
-        <router-link><button class="btn-1">EXPLORE MENU</button></router-link> 
+        <router-link  to="shop"><button class="btn-1">EXPLORE MENU</button></router-link> 
         <router-link to="/about"><button class="btn-2 ">OUR STORY</button></router-link>
            </div>
        </div>
