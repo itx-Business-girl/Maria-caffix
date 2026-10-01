@@ -1,4 +1,5 @@
 <template>
+
   <!-- MENU HEADING -->
   <div class="number-flex reveal">
     <span></span>
@@ -40,7 +41,10 @@
 
         <div class="card-bottom">
           <h3>Rs. 550</h3>
-          <router-link to="shop"><button>ORDER</button></router-link>
+
+          <router-link to="shop">
+            <button>ORDER</button>
+          </router-link>
         </div>
 
       </div>
@@ -66,7 +70,10 @@
 
         <div class="card-bottom">
           <h3>Rs. 650</h3>
-          <router-link to="shop"><button>ORDER</button></router-link>
+
+          <router-link to="shop">
+            <button>ORDER</button>
+          </router-link>
         </div>
 
       </div>
@@ -92,7 +99,10 @@
 
         <div class="card-bottom">
           <h3>Rs. 650</h3>
-          <router-link to="shop"><button>ORDER</button></router-link>
+
+          <router-link to="shop">
+            <button>ORDER</button>
+          </router-link>
         </div>
 
       </div>
@@ -118,7 +128,10 @@
 
         <div class="card-bottom">
           <h3>Rs. 590</h3>
-          <router-link to="shop"><button>ORDER</button></router-link>
+
+          <router-link to="shop">
+            <button>ORDER</button>
+          </router-link>
         </div>
 
       </div>
@@ -129,9 +142,11 @@
 
 
   <!-- VIEW FULL MENU BUTTON -->
-  <router-link to="shop"><button class="view-menu-button reveal">
-    VIEW FULL MENU ↪
-  </button></router-link>
+  <router-link to="shop">
+    <button class="view-menu-button reveal">
+      VIEW FULL MENU ↪
+    </button>
+  </router-link>
 
 
   <!-- LIKE NEWSLETTER -->
@@ -240,6 +255,10 @@
 
 <style scoped>
 
+/* ================================
+   MENU NUMBER
+================================ */
+
 .number-flex {
   display: flex;
   justify-content: center;
@@ -262,7 +281,9 @@
 }
 
 
-/* MENU HEADING */
+/* ================================
+   MENU HEADING
+================================ */
 
 .menu-heading {
   color: #2f1710;
@@ -288,9 +309,9 @@
 }
 
 
-
-   /* COFFEE CARDS */
-
+/* ================================
+   COFFEE CARDS
+================================ */
 
 .coffee-cards {
   display: flex;
@@ -299,14 +320,18 @@
   gap: 35px;
   padding: 40px;
   flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .coffee-card {
   width: 400px;
+  max-width: 100%;
   background-color: #F5EBDD;
   border: 1px solid #d8c8b5;
   border-radius: 4px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .card-image {
@@ -382,9 +407,9 @@
 }
 
 
-
-   /* VIEW MENU BUTTON */
-
+/* ================================
+   VIEW MENU BUTTON
+================================ */
 
 .view-menu-button {
   display: block;
@@ -405,9 +430,9 @@
 }
 
 
-
-   /* LIKE NEWSLETTER */
-
+/* ================================
+   LIKE NEWSLETTER
+================================ */
 
 .like-newsletter {
   display: flex;
@@ -418,10 +443,13 @@
   padding: 30px 10px;
   font-weight: 500;
   margin-left: 7px;
+  box-sizing: border-box;
+  width: calc(100% - 7px);
 }
 
 .feature-box {
   text-align: center;
+  max-width: 100%;
 }
 
 .feature-box h1:first-child {
@@ -440,9 +468,9 @@
 }
 
 
-
-   /* QUOTE SECTION */
-
+/* ================================
+   QUOTE SECTION
+================================ */
 
 .sheik-div {
   background-color: #f5ede0;
@@ -454,6 +482,7 @@
   align-items: center;
   flex-direction: column;
   line-height: 43px;
+  box-sizing: border-box;
 }
 
 .sheik-para {
@@ -478,9 +507,9 @@
 }
 
 
-
-   /* VISIT US */
-
+/* ================================
+   VISIT US
+================================ */
 
 .backgroung-img {
   background-image:
@@ -511,6 +540,7 @@
   line-height: 52px;
   text-align: center;
   padding: 0 30px;
+  box-sizing: border-box;
 }
 
 .visit-img-flex h1 {
@@ -522,12 +552,13 @@
   color: lightgray;
   font-size: 18px;
   font-weight: 200;
+  max-width: 800px;
 }
 
 
-
-   /* GET DIRECTIONS */
-
+/* ================================
+   GET DIRECTIONS
+================================ */
 
 .button {
   width: 150px;
@@ -542,6 +573,404 @@
 
 .button:hover {
   background-color: rgb(224, 222, 222);
+}
+
+
+/* ==================================================
+   LARGE TABLET / SMALL LAPTOP
+================================================== */
+
+@media (max-width: 1200px) {
+
+  .coffee-cards {
+    gap: 25px;
+    padding: 35px 25px;
+  }
+
+  .coffee-card {
+    width: 380px;
+  }
+
+  .like-newsletter {
+    gap: 25px;
+  }
+
+  .para {
+    font-size: 15px;
+  }
+
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 900px) {
+
+  .number-flex {
+    margin-top: 110px;
+  }
+
+  .menu-heading {
+    font-size: 36px;
+  }
+
+  .menu-para {
+    padding: 0 25px;
+  }
+
+  .menu-para br {
+    display: none;
+  }
+
+  .coffee-cards {
+    padding: 30px 20px;
+    gap: 25px;
+  }
+
+  .coffee-card {
+    width: calc(50% - 15px);
+    min-width: 280px;
+  }
+
+  .card-image {
+    height: 220px;
+  }
+
+  .like-newsletter {
+    flex-direction: column;
+    gap: 45px;
+    padding: 55px 25px;
+    min-height: auto;
+  }
+
+  .feature-box {
+    width: 100%;
+  }
+
+  .para br {
+    display: none;
+  }
+
+  .sheik-div {
+    padding: 50px 25px;
+  }
+
+  .sheik-para {
+    font-size: 25px;
+    line-height: 38px;
+  }
+
+  .sheik-para br {
+    display: none;
+  }
+
+  .backgroung-img {
+    height: 500px;
+  }
+
+  .visit-img-flex {
+    height: 500px;
+    padding: 0 30px;
+  }
+
+  .visit-img-flex h1 {
+    font-size: 42px;
+  }
+
+  .visit-img-flex p {
+    font-size: 17px;
+    line-height: 30px;
+  }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+  .number-flex {
+    margin-top: 95px;
+  }
+
+  .number-flex p {
+    font-size: 10px;
+  }
+
+  .number-flex span {
+    width: 9px;
+  }
+
+
+  .menu-heading {
+    font-size: 30px;
+    margin-top: 15px;
+  }
+
+  .heding-line {
+    width: 45px;
+  }
+
+  .menu-para {
+    font-size: 14px;
+    line-height: 23px;
+    padding: 0 25px;
+  }
+
+  .menu-para br {
+    display: none;
+  }
+
+
+  /* CARDS */
+
+  .coffee-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 15px;
+  }
+
+  .coffee-card {
+    width: 100%;
+    max-width: 430px;
+    min-width: 0;
+  }
+
+  .card-image {
+    height: 220px;
+  }
+
+  .card-content {
+    padding: 13px;
+  }
+
+  .card-content h2 {
+    font-size: 19px;
+  }
+
+  .card-content p {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .card-bottom {
+    margin-top: 15px;
+  }
+
+
+  /* VIEW MENU */
+
+  .view-menu-button {
+    width: 150px;
+    height: 42px;
+    margin-bottom: 30px;
+  }
+
+
+  /* FEATURES */
+
+  .like-newsletter {
+    width: 100%;
+    margin-left: 0;
+    padding: 50px 20px;
+    gap: 45px;
+  }
+
+  .feature-box h1 {
+    font-size: 25px;
+  }
+
+  .feature-box h1:first-child {
+    font-size: 30px;
+  }
+
+  .para {
+    font-size: 14px;
+    line-height: 23px;
+    padding: 0 10px;
+  }
+
+  .para br {
+    display: none;
+  }
+
+
+  /* QUOTE */
+
+  .sheik-div {
+    min-height: 300px;
+    padding: 40px 20px;
+  }
+
+  .couts {
+    font-size: 30px;
+  }
+
+  .sheik-para {
+    font-size: 21px;
+    line-height: 32px;
+    margin: 10px 0;
+  }
+
+  .sheik-para br {
+    display: none;
+  }
+
+  .subtitle-sheik {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+  }
+
+
+  /* VISIT */
+
+  .backgroung-img {
+    height: 450px;
+  }
+
+  .visit-img-flex {
+    height: 450px;
+    padding: 0 20px;
+    line-height: 35px;
+  }
+
+  .visit-img-flex h1 {
+    font-size: 34px;
+    margin-bottom: 5px;
+  }
+
+  .visit-img-flex p {
+    font-size: 15px;
+    line-height: 26px;
+    margin: 10px 0 20px;
+  }
+
+  .button {
+    width: 145px;
+    height: 40px;
+  }
+
+}
+
+
+/* ==================================================
+   VERY SMALL MOBILE
+================================================== */
+
+@media (max-width: 380px) {
+
+  .number-flex {
+    margin-top: 90px;
+  }
+
+  .menu-heading {
+    font-size: 27px;
+  }
+
+  .menu-para {
+    font-size: 13px;
+    padding: 0 18px;
+  }
+
+  .coffee-cards {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .card-image {
+    height: 200px;
+  }
+
+  .badge {
+    top: 10px;
+    right: 10px;
+    padding: 6px 9px;
+    font-size: 8px;
+  }
+
+  .card-content h2 {
+    font-size: 18px;
+  }
+
+  .card-content p {
+    font-size: 12px;
+  }
+
+  .card-bottom h3 {
+    font-size: 16px;
+  }
+
+  .card-bottom button {
+    width: 70px;
+  }
+
+  .feature-box h1 {
+    font-size: 22px;
+  }
+
+  .para {
+    font-size: 13px;
+  }
+
+  .sheik-para {
+    font-size: 19px;
+    line-height: 29px;
+  }
+
+  .visit-img-flex h1 {
+    font-size: 30px;
+  }
+
+  .visit-img-flex p {
+    font-size: 14px;
+  }
+
+}
+
+
+/* ==================================================
+   EXTRA SMALL DEVICES
+================================================== */
+
+@media (max-width: 320px) {
+
+  .menu-heading {
+    font-size: 24px;
+  }
+
+  .coffee-card {
+    border-radius: 3px;
+  }
+
+  .card-image {
+    height: 180px;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+  .card-content h2 {
+    font-size: 17px;
+  }
+
+  .card-content p {
+    font-size: 11px;
+  }
+
+  .sheik-para {
+    font-size: 17px;
+  }
+
+  .visit-img-flex h1 {
+    font-size: 27px;
+  }
+
 }
 
 </style>

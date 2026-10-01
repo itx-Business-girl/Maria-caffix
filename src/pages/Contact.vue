@@ -20,15 +20,15 @@
 
 
   <!-- CONTACT SECTION -->
-  <div class="contact-sections">
+  <div class="contact-sections reveal">
 
     <!-- FIND US -->
-    <div class="find-us">
+    <div class="find-us reveal">
 
       <h1>Find Us</h1>
 
       <!-- Main Cafe -->
-      <div class="contact-item">
+      <div class="contact-item reveal">
 
         <div class="div-small">📍</div>
 
@@ -46,7 +46,7 @@
 
 
       <!-- Phone -->
-      <div class="contact-item">
+      <div class="contact-item reveal">
 
         <div class="div-small">📞</div>
 
@@ -62,7 +62,7 @@
 
 
       <!-- Email -->
-      <div class="contact-item">
+      <div class="contact-item reveal">
 
         <div class="div-small">✉️</div>
 
@@ -80,14 +80,14 @@
 
 
       <!-- Hours -->
-      <div class="contact-item">
+      <div class="contact-item reveal">
 
         <div class="div-small">🕐</div>
 
         <div class="contact-text">
           <p class="div-heading">HOURS</p>
 
-          <p class="div-para">
+          <p class="div-para reveal">
             Mon–Fri: 7:00 AM – 9:00 PM
             <br />
             Sat: 8:00 AM – 10:00 PM
@@ -101,7 +101,7 @@
 
 
     <!-- SEND MESSAGE FORM -->
-    <div class="contact-flex">
+    <div class="contact-flex ">
 
       <h1>Send a Message</h1>
 
@@ -159,7 +159,7 @@
 
 
       <!-- Button -->
-      <button class="send-button" @click="sendMessage">
+      <button class="send-button reveal" @click="sendMessage">
         SEND MESSAGE →
       </button>
        <!-- SUCCESS MESSAGE -->
@@ -517,17 +517,17 @@
 </style>
 
 <script setup>
- import {ref} from 'vue'
-  
- const name = ref('') 
- const email = ref('')
- const subject = ref('')
- const message = ref('')
+import { ref, onMounted } from 'vue'
 
- const submitted = ref(false)
+const name = ref('')
+const email = ref('')
+const subject = ref('')
+const message = ref('')
 
- const sendMessage = () =>{
-  if(!name.value || !email.value || !subject.value || !message.value){
+const submitted = ref(false)
+
+const sendMessage = () => {
+  if (!name.value || !email.value || !subject.value || !message.value) {
     alert('please fill in all fields.')
     return
   }
@@ -538,5 +538,26 @@
   email.value = ''
   subject.value = ''
   message.value = ''
- }
+}
+
+
+/* REVEAL ANIMATION */
+onMounted(() => {
+  const reveals = document.querySelectorAll('.reveal')
+
+  const revealOnScroll = () => {
+    reveals.forEach((element) => {
+      const windowHeight = window.innerHeight
+      const elementTop = element.getBoundingClientRect().top
+
+      if (elementTop < windowHeight - 100) {
+        element.classList.add('show')
+      }
+    })
+  }
+
+  window.addEventListener('scroll', revealOnScroll)
+
+  revealOnScroll()
+})
 </script>

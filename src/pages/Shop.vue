@@ -74,7 +74,7 @@
               Rs. {{ product.price }}
             </span>
 
-            <button @click="cart.addToCart">
+            <button @click="cart.addToCart(product)">
               + ADD
             </button>
 
@@ -90,9 +90,28 @@
 
 </template>
 
+
 <style scoped>
 
-/* 
+/*
+   GLOBAL SAFETY
+   Prevents these sections from creating horizontal scrolling
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+.background-img,
+.products-section,
+.products-grid,
+.product-card,
+.product-content {
+  max-width: 100%;
+}
+
+
+/*
    WELCOME / HERO SECTION
 */
 
@@ -144,6 +163,9 @@
 
   line-height: 40px;
   margin-left: 40px;
+
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .text-content p {
@@ -152,6 +174,9 @@
   letter-spacing: 2px;
   font-weight: 700;
   margin: 5px;
+
+  max-width: 100%;
+  text-align: center;
 }
 
 .text-content h1 {
@@ -159,6 +184,8 @@
   font-size: 50px;
   margin: 10px 0;
   text-align: center;
+
+  max-width: 100%;
 }
 
 .sub-text {
@@ -176,12 +203,17 @@
 .products-section {
   background-color: #f8f3eb;
   padding: 50px 40px;
+
+  width: 100%;
+  overflow: hidden;
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 25px;
+
+  width: 100%;
 }
 
 
@@ -194,6 +226,9 @@
   border: 1px solid #d8c7ae;
   border-radius: 4px;
   overflow: hidden;
+
+  width: 100%;
+  min-width: 0;
 }
 
 
@@ -237,6 +272,8 @@
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1px;
+
+  max-width: calc(100% - 24px);
 }
 
 .badge {
@@ -252,6 +289,8 @@
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1px;
+
+  max-width: calc(100% - 24px);
 }
 
 
@@ -261,6 +300,8 @@
 
 .product-content {
   padding: 20px;
+
+  min-width: 0;
 }
 
 .product-content h2 {
@@ -271,6 +312,8 @@
   font-weight: 500;
 
   margin: 0 0 10px;
+
+  overflow-wrap: break-word;
 }
 
 .product-content p {
@@ -280,6 +323,8 @@
   line-height: 1.7;
 
   margin: 0;
+
+  overflow-wrap: break-word;
 }
 
 
@@ -293,6 +338,9 @@
   align-items: center;
 
   margin-top: 18px;
+
+  gap: 12px;
+  min-width: 0;
 }
 
 .price {
@@ -301,6 +349,8 @@
   font-family: Georgia, serif;
   font-size: 17px;
   font-weight: 600;
+
+  white-space: nowrap;
 }
 
 .product-bottom button {
@@ -316,6 +366,8 @@
   letter-spacing: 1px;
 
   cursor: pointer;
+
+  flex-shrink: 0;
 }
 
 .product-bottom button:hover {
@@ -330,7 +382,7 @@
 @media (max-width: 900px) {
 
   .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
 }
@@ -338,12 +390,23 @@
 
 @media (max-width: 600px) {
 
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-
   .products-section {
     padding: 30px 20px;
+    width: 100%;
+  }
+
+  .products-grid {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .product-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .product-image {
+    height: 230px;
   }
 
   .text-content h1 {
@@ -354,27 +417,90 @@
     font-size: 14px;
   }
 
+  .welcome-flex {
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .product-content {
+    padding: 18px;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+  .products-section {
+    padding: 25px 15px;
+  }
+
+  .product-content {
+    padding: 16px;
+  }
+
+  .product-content h2 {
+    font-size: 17px;
+  }
+
+  .product-content p {
+    font-size: 13px;
+  }
+
+  .product-bottom {
+    gap: 8px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .product-bottom button {
+    padding: 9px 13px;
+  }
+
+  .text-content h1 {
+    font-size: 32px;
+  }
+
+  .text-content p {
+    font-size: 12px;
+  }
+
+  .sub-text {
+    font-size: 13px;
+  }
+
 }
 
 </style>
 
 
-
 <script setup>
+
 import { ref, onMounted } from 'vue'
 import { getCoffeeImages } from '../pexels.js'
 import { useCartStore } from '../stores/cart'
 
 
 const coffeeImages = ref([])
+
 const cart = useCartStore()
- const cartCount = ref(0)
- 
- const addToCart = () => {
+
+const cartCount = ref(0)
+
+const addToCart = () => {
   cartCount.value++
- }
+}
+
 
 const products = [
+
   {
     name: 'Cold Caramel Latte',
     description: 'House-made caramel, steamed whole milk, a dusting of fleur de sel.',
@@ -382,6 +508,7 @@ const products = [
     category: 'ESPRESSO',
     badge: 'BESTSELLER'
   },
+
   {
     name: 'Hazelnut Cold Brew',
     description: '20-hour cold extraction, hazelnut syrup, nitrogen-whipped oat foam.',
@@ -389,6 +516,7 @@ const products = [
     category: 'COLD BREW',
     badge: 'SEASONAL'
   },
+
   {
     name: 'Vanilla Cappuccino',
     description: 'Rich espresso with steamed milk and a smooth vanilla finish.',
@@ -396,6 +524,7 @@ const products = [
     category: 'ESPRESSO',
     badge: 'POPULAR'
   },
+
   {
     name: 'Classic Americano',
     description: 'Double espresso balanced with hot water for a clean, bold cup.',
@@ -403,6 +532,7 @@ const products = [
     category: 'ESPRESSO',
     badge: 'CLASSIC'
   },
+
   {
     name: 'Mocha Velvet',
     description: 'Dark chocolate, espresso and steamed milk topped with silky foam.',
@@ -410,6 +540,7 @@ const products = [
     category: 'MOCHA',
     badge: 'BESTSELLER'
   },
+
   {
     name: 'Caramel Macchiato',
     description: 'Espresso layered with vanilla, steamed milk and caramel drizzle.',
@@ -417,6 +548,7 @@ const products = [
     category: 'SPECIALTY',
     badge: 'FAVORITE'
   },
+
   {
     name: 'Iced Vanilla Latte',
     description: 'Chilled espresso, creamy milk and delicate vanilla over ice.',
@@ -424,6 +556,7 @@ const products = [
     category: 'ICED',
     badge: 'SUMMER'
   },
+
   {
     name: 'Brown Sugar Cold Brew',
     description: 'Slow-steeped coffee with brown sugar and a creamy cold finish.',
@@ -431,6 +564,7 @@ const products = [
     category: 'COLD BREW',
     badge: 'SEASONAL'
   },
+
   {
     name: 'Espresso Classic',
     description: 'A concentrated double shot with rich crema and deep roasted notes.',
@@ -438,6 +572,7 @@ const products = [
     category: 'ESPRESSO',
     badge: 'CLASSIC'
   },
+
   {
     name: 'Cinnamon Latte',
     description: 'Smooth espresso and steamed milk finished with warm cinnamon.',
@@ -445,6 +580,7 @@ const products = [
     category: 'LATTE',
     badge: 'NEW'
   },
+
   {
     name: 'Iced Mocha',
     description: 'Cold espresso blended with chocolate and creamy milk over ice.',
@@ -452,6 +588,7 @@ const products = [
     category: 'ICED',
     badge: 'POPULAR'
   },
+
   {
     name: 'Signature Caffix',
     description: 'Our signature espresso blend with silky milk and a rich finish.',
@@ -459,10 +596,16 @@ const products = [
     category: 'SIGNATURE',
     badge: 'MARIA CAFFIX'
   }
+
 ]
 
+
 onMounted(async () => {
+
   coffeeImages.value = await getCoffeeImages()
+
   console.log(coffeeImages.value)
+
 })
+
 </script>
